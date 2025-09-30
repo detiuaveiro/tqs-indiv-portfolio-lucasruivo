@@ -1,0 +1,117 @@
+import org.junit.jupiter.api.DisplayName;
+import org.slf4j.Logger;
+
+import java.util.NoSuchElementException;
+import tqs.TqsStack;
+
+import static java.lang.invoke.MethodHandles.lookup;
+import static org.junit.jupiter.api.Assertions.*;
+
+class TqsStackTest {
+
+    // Use SLF4J logger instead of System.out
+    static final Logger log = org.slf4j.LoggerFactory.getLogger(lookup().lookupClass());
+
+    @DisplayName("Stack is empty on construction")
+    @org.junit.jupiter.api.Test
+    void emptyOnConstruction() {
+        TqsStack<Integer> stack = new TqsStack<>();
+        log.debug("Testing emptyOnConstruction in {}", stack.getClass().getName());
+        assertTrue(stack.isEmpty());
+        assertEquals(0, stack.size());
+    }
+
+    @DisplayName("Push elements and check size and emptiness")
+    @org.junit.jupiter.api.Test
+    void pushElements() {
+        TqsStack<Integer> stack = new TqsStack<>();
+        log.debug("Testing pushElements in {}", stack.getClass().getName());
+
+        int n = 3;
+        for (int i = 1; i <= n; i++) {
+            stack.push(i);
+        }
+
+        assertFalse(stack.isEmpty());
+        assertEquals(n, stack.size());
+    }
+
+    @DisplayName("Push then pop returns the same value")
+    @org.junit.jupiter.api.Test
+    void pushThenPop() {
+        TqsStack<String> stack = new TqsStack<>();
+        log.debug("Testing pushThenPop in {}", stack.getClass().getName());
+
+        stack.push("hello");
+        String popped = stack.pop();
+        assertEquals("hello", popped);
+    }
+
+    @DisplayName("Push then peek returns value but size remains the same")
+    @org.junit.jupiter.api.Test
+    void pushThenPeek() {
+        TqsStack<String> stack = new TqsStack<>();
+        log.debug("Testing pushThenPeek in {}", stack.getClass().getName());
+
+        stack.push("world");
+        int sizeBefore = stack.size();
+        String peeked = stack.peek();
+        int sizeAfter = stack.size();
+
+        assertEquals("world", peeked);
+        assertEquals(sizeBefore, sizeAfter);
+    }
+
+    @DisplayName("Popping all elements empties the stack")
+    @org.junit.jupiter.api.Test
+    void popAllElements() {
+        TqsStack<Integer> stack = new TqsStack<>();
+        log.debug("Testing popAllElements in {}", stack.getClass().getName());
+
+        stack.push(1);
+        stack.push(2);
+        stack.pop();
+        stack.pop();
+
+        assertTrue(stack.isEmpty());
+        assertEquals(0, stack.size());
+    }
+
+    @DisplayName("Popping from empty stack throws NoSuchElementException")
+    @org.junit.jupiter.api.Test
+    void popEmptyStackThrows() {
+        TqsStack<Integer> stack = new TqsStack<>();
+        log.debug("Testing popEmptyStackThrows in {}", stack.getClass().getName());
+
+        assertThrows(NoSuchElementException.class, stack::pop);
+    }
+
+    @DisplayName("Peeking into empty stack throws NoSuchElementException")
+    @org.junit.jupiter.api.Test
+    void peekEmptyStackThrows() {
+        TqsStack<Integer> stack = new TqsStack<>();
+        log.debug("Testing peekEmptyStackThrows in {}", stack.getClass().getName());
+
+        assertThrows(NoSuchElementException.class, stack::peek);
+    }
+
+    @DisplayName("popTopN removes n-1 elements and returns the nth item")
+    @org.junit.jupiter.api.Test
+    void popTopNTest() {
+        TqsStack<Integer> stack = new TqsStack<>();
+        log.debug("Testing popTopN in {}", stack.getClass().getName());
+
+        // Adiciona elementos 1, 2, 3, 4 (4 é topo)
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+
+        // popTopN(3) deve remover 2 elementos do topo (4 e 3) e retornar o 3º do topo (2)
+        int result = stack.popTopN(3);
+        assertEquals(2, result, "popTopN should return the nth element from top");
+
+        // Verifica que o tamanho agora é 1 (somente 1 permanece)
+        assertEquals(1, stack.size(), "Stack size should decrease correctly after popTopN");
+    }
+}
