@@ -116,11 +116,14 @@ Em termos de relacionamento:
 ---
 
 ## Postman prints
-
-![Postam-POST](images/post.png)  
-![Postam-GET(general)](images/getgeneral.png)
-![Postam-POST](images/get1.png)
-![Postam-POST](images/delete.png)
+### Postam-POST
+![Postam-POST](images/post_ex3.3.png)  
+### Postam-GET(all)
+![Postam-GET(general)](images/getgeneral_ex3.3.png)
+### Postam-GET(one)
+![Postam-GET(one)](images/get1_ex3.3.png)
+### Postam-DELETE
+![Postam-DELETE](images/delete_ex3.3.png)
 
 ## O que são as dependências “spring-boot-starter-*”?
 
@@ -162,3 +165,16 @@ Os dados estão a ser guardados numa **base de dados em memória H2**, que o Spr
 | `/api/bookings/{token}`         | GET         | Consultar uma reserva específica            |
 | `/api/bookings/{token}`  | DELETE        | Cancelar uma reserva                        |
 | `/api/bookings/{token}/checkin` | POST        | Fazer check-in (usar o ticket)              |
+
+## Postman prints
+
+### Postam-POST
+![Postam-POST](images/post_ex3.4.png)  
+### Postam-GET(all)inicial
+![Postam-GET(all)inicial](images/getall1_ex3.4.png)
+### Postam-GET(one)
+![Postam-GET(one)](images/getone_ex3.4.png)
+### Postam-DELETE
+![Postam-POST](images/delete_ex3.4.png)
+### Postam-GET(all)final
+![Postam-GET(all)final](images/getall2_ex3.4.png)
