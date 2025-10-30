@@ -213,6 +213,16 @@ Mesmo com alta cobertura, o TqsStack pode falhar em cenários não testados ou e
 ### Branches Coverage
 ![cov_jacoco_branches](images/jacoco_branches_ex1.4.png)
 
+# Ex2.1
+
+## Mockito warnings with extra “stocks” types in the expectations that those strictly needed in the test:
+
+[INFO] Results:  
+[INFO]    
+[ERROR] Errors:  
+[ERROR]   StocksPortfolioTest.getTotalValueTest_withExtraExpectations » UnnecessaryStubbing  
+[INFO]   
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0  
   
 # Ex3.1 - What is Spring Boot?
 

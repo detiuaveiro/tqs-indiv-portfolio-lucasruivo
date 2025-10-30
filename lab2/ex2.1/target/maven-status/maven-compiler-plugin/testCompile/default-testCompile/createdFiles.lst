@@ -1,1 +1,3 @@
-tqs/StocksPortfolioTest.class
+StocksPortfolioHamcrestTest.class
+StocksPortfolioJUnitTest.class
+StocksPortfolioAssertJTest.class

@@ -2,6 +2,8 @@ package tqs;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class StocksPortfolio {
     private List<Stock> stocks;
@@ -28,5 +30,18 @@ public class StocksPortfolio {
         return value;
     }
 
+    public List<Stock> mostValuableStocks(int topN) {
+        if (topN <= 0 || stocks.isEmpty()) {
+            return new ArrayList<>();
+        }
+    
+        return stocks.stream()
+                .sorted((a, b) -> Double.compare(
+                        b.getQuantity() * stockmarket.lookUpPrice(b.getLabel()),
+                        a.getQuantity() * stockmarket.lookUpPrice(a.getLabel())
+                ))
+                .limit(topN)
+                .collect(Collectors.toList());
+    }
     
 }
