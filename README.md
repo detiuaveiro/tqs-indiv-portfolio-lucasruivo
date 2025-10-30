@@ -1,3 +1,219 @@
+# Ex1.2
+
+## mvn test
+
+[INFO] Scanning for projects...  
+[INFO]   
+[INFO] -------------------------< tqs:TqsCalculator   >--------------------------  
+[INFO] Building TqsCalculator 1.0-SNAPSHOT  
+[INFO]   from pom.xml  
+[INFO] --------------------------------[ jar ] ---------------------------------  
+[INFO]   
+[INFO] --- resources:3.3.1:resources (default-resources) @ TqsCalculator ---  
+[INFO] Copying 1 resource from src/main/resources to target/classes  
+[INFO]   
+[INFO] --- compiler:3.13.0:compile (default-compile) @ TqsCalculator ---  
+[INFO] Recompiling the module because of changed source code.  
+[INFO] Compiling 1 source file with javac [debug target 21] to target/classes  
+[WARNING] location of system modules is not set in conjunction with -source 21  
+  not setting the location of system modules may lead to class files that cannot run on JDK 21  
+    --release 21 is recommended instead of -source 21 -target 21 because it sets the location of system modules automatically  
+[INFO]   
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ TqsCalculator ---  
+[INFO] skip non existing resourceDirectory /Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab1/ex1.2/src/test/resources  
+[INFO]   
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ TqsCalculator ---  
+[INFO] Recompiling the module because of changed dependency.  
+[INFO] Compiling 1 source file with javac [debug target 21] to target/test-classes  
+[WARNING] location of system modules is not set in conjunction with -source 21  
+  not setting the location of system modules may lead to class files that cannot run on JDK 21  
+    --release 21 is recommended instead of -source 21 -target 21 because it sets the location of system modules automatically  
+[INFO]   
+[INFO] --- surefire:3.5.4:test (default-test) @ TqsCalculator ---  
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider  
+[INFO]   
+[INFO] -------------------------------------------------------  
+[INFO]  T E S T S  
+[INFO] -------------------------------------------------------  
+[INFO] Running ua.TqsCalculatorTest  
+2025-10-30 01:04:27 [main] DEBUG ua.TqsCalculatorTest.subtract(27) -- Testing subtract method in ua.TqsCalculator  
+2025-10-30 01:04:27 [main] DEBUG ua.TqsCalculatorTest.add(18) -- Testing sum method in ua.TqsCalculator  
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s -- in ua.TqsCalculatorTest  
+[INFO]   
+[INFO] Results:  
+[INFO]   
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0  
+[INFO]   
+[INFO] ------------------------------------------------------------------------  
+[INFO] BUILD SUCCESS  
+[INFO] ------------------------------------------------------------------------  
+[INFO] Total time:  0.906 s  
+[INFO] Finished at: 2025-10-30T01:04:27Z  
+[INFO] ------------------------------------------------------------------------  
+
+## mvn clean
+         
+[INFO] Scanning for projects...  
+[INFO]   
+[INFO] -------------------------< tqs:TqsCalculator >--------------------------  
+[INFO] Building TqsCalculator 1.0-SNAPSHOT  
+[INFO]   from pom.xml  
+[INFO] --------------------------------[ jar ]---------------------------------  
+[INFO]   
+[INFO] --- clean:3.2.0:clean (default-clean) @ TqsCalculator ---  
+[INFO] Deleting /Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab1/ex1.2/target  
+[INFO] ------------------------------------------------------------------------  
+[INFO] BUILD SUCCESS  
+[INFO] ------------------------------------------------------------------------  
+[INFO] Total time:  0.120 s  
+[INFO] Finished at: 2025-10-30T01:08:53Z  
+[INFO] ------------------------------------------------------------------------  
+
+## mvn dependency:tree
+
+[INFO] Scanning for projects...  
+[INFO]   
+[INFO] -------------------------< tqs:TqsCalculator >--------------------------  
+[INFO] Building TqsCalculator 1.0-SNAPSHOT  
+[INFO]   from pom.xml  
+[INFO] --------------------------------[ jar ]---------------------------------  
+[INFO]   
+[INFO] --- dependency:3.7.0:tree (default-cli) @ TqsCalculator ---  
+[INFO] tqs:TqsCalculator:jar:1.0-SNAPSHOT  
+[INFO] +- org.junit.jupiter:junit-jupiter:jar:5.13.4:test  
+[INFO] |  +- org.junit.jupiter:junit-jupiter-api:jar:5.13.4:test  
+[INFO] |  |  +- org.opentest4j:opentest4j:jar:1.3.0:test  
+[INFO] |  |  +- org.junit.platform:junit-platform-commons:jar:1.13.4:test  
+[INFO] |  |  \- org.apiguardian:apiguardian-api:jar:1.1.2:test  
+[INFO] |  +- org.junit.jupiter:junit-jupiter-params:jar:5.13.4:test  
+[INFO] |  \- org.junit.jupiter:junit-jupiter-engine:jar:5.13.4:test  
+[INFO] |     \- org.junit.platform:junit-platform-engine:jar:1.13.4:test  
+[INFO] +- org.slf4j:slf4j-api:jar:2.0.17:compile  
+[INFO] \- ch.qos.logback:logback-classic:jar:1.5.18:compile  
+[INFO]    \- ch.qos.logback:logback-core:jar:1.5.18:compile  
+[INFO] ------------------------------------------------------------------------  
+[INFO] BUILD SUCCESS  
+[INFO] ------------------------------------------------------------------------  
+[INFO] Total time:  0.370 s  
+[INFO] Finished at: 2025-10-30T01:09:58Z  
+[INFO] ------------------------------------------------------------------------  
+
+## mvn clean test package
+
+[INFO] Scanning for projects...  
+[INFO]   
+[INFO] -------------------------< tqs:TqsCalculator >--------------------------  
+[INFO] Building TqsCalculator 1.0-SNAPSHOT  
+[INFO]   from pom.xml  
+[INFO] --------------------------------[ jar ]---------------------------------  
+[INFO]   
+[INFO] --- clean:3.2.0:clean (default-clean) @ TqsCalculator ---  
+[INFO] Deleting /Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab1/ex1.2/target  
+[INFO]   
+[INFO] --- resources:3.3.1:resources (default-resources) @ TqsCalculator ---  
+[INFO] Copying 1 resource from src/main/resources to target/classes  
+[INFO]   
+[INFO] --- compiler:3.13.0:compile (default-compile) @ TqsCalculator ---  
+[INFO] Recompiling the module because of changed source code.  
+[INFO] Compiling 1 source file with javac [debug target 21] to target/classes  
+[WARNING] location of system modules is not set in conjunction with -source 21  
+  not setting the location of system modules may lead to class files that cannot run on JDK 21  
+    --release 21 is recommended instead of -source 21 -target 21 because it sets the location of system modules automatically  
+[INFO]   
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ TqsCalculator ---  
+[INFO] skip non existing resourceDirectory /Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab1/ex1.2/src/test/resources  
+[INFO]   
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ TqsCalculator ---  
+[INFO] Recompiling the module because of changed dependency.  
+[INFO] Compiling 1 source file with javac [debug target 21] to target/test-classes  
+[WARNING] location of system modules is not set in conjunction with -source 21  
+  not setting the location of system modules may lead to class files that cannot run on JDK 21  
+    --release 21 is recommended instead of -source 21 -target 21 because it sets the location of system modules automatically  
+[INFO]   
+[INFO] --- surefire:3.5.4:test (default-test) @ TqsCalculator ---  
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider  
+[INFO]   
+[INFO] -------------------------------------------------------  
+[INFO]  T E S T S  
+[INFO] -------------------------------------------------------  
+[INFO] Running ua.TqsCalculatorTest  
+2025-10-30 01:11:34 [main] DEBUG ua.TqsCalculatorTest.subtract(27) -- Testing subtract method in ua.TqsCalculator  
+2025-10-30 01:11:34 [main] DEBUG ua.TqsCalculatorTest.add(18) -- Testing sum method in ua.TqsCalculator  
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.093 s -- in ua.TqsCalculatorTest  
+[INFO]   
+[INFO] Results:  
+[INFO]   
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0  
+[INFO]   
+[INFO]   
+[INFO] --- resources:3.3.1:resources (default-resources) @ TqsCalculator ---  
+[INFO] Copying 1 resource from src/main/resources to target/classes  
+[INFO]   
+[INFO] --- compiler:3.13.0:compile (default-compile) @ TqsCalculator ---  
+[INFO] Nothing to compile - all classes are up to date.  
+[INFO]   
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ TqsCalculator ---  
+[INFO] skip non existing resourceDirectory /Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab1/ex1.2/src/test/resources  
+[INFO]   
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ TqsCalculator ---  
+[INFO] Recompiling the module because of changed dependency.  
+[INFO] Compiling 1 source file with javac [debug target 21] to target/test-classes  
+[WARNING] location of system modules is not set in conjunction with -source 21  
+  not setting the location of system modules may lead to class files that cannot run on JDK 21  
+    --release 21 is recommended instead of -source 21 -target 21 because it sets the location of system modules automatically  
+[INFO]   
+[INFO] --- surefire:3.5.4:test (default-test) @ TqsCalculator ---  
+[INFO] Skipping execution of surefire because it has already been run for this configuration  
+[INFO]   
+[INFO] --- jar:3.4.1:jar (default-jar) @ TqsCalculator ---  
+[INFO] Building jar: /Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab1/ex1.2/target/TqsCalculator-1.0-SNAPSHOT.jar  
+[INFO] ------------------------------------------------------------------------  
+[INFO] BUILD SUCCESS  
+[INFO] ------------------------------------------------------------------------  
+[INFO] Total time:  1.040 s  
+[INFO] Finished at: 2025-10-30T01:11:34Z  
+[INFO] ------------------------------------------------------------------------  
+
+## Does the current set of tests already provide a comprehensive “safety net”? How does the calculator handle infinite decimal quotients (e.g.  13÷11)?
+
+
+Os testes cobrem bem as operações básicas e erros principais (como divisão por zero e raiz de número negativo) mas não são totalmente completos — faltam alguns casos limite, como divisão com resultado não inteiro, expoente negativo e raiz de zero, ou seja, bom “safety net”, mas pode melhorar um pouco. O TqsCalculator usa double em todas as operações, incluindo a divisão, então o método lida bem com divisões infinitas (como 13/11), apenas com a limitação natural de precisão dos números double.
+
+# Ex1.3
+### Coverage Com Jacoco
+![cov_jacoco](images/jacoco_ex1.3.png)  
+### Coverage com Jacoco após alguns Disabled()
+![cov_jacoco_disabled](images/jacoco_disabled_ex1.3.png)
+### Coverage com Jacoco com testes de IA
+![cov_jacoco_ia](images/jacoco_ia_ex1.3.png)
+
+## Considering the previous point, can you think of a scenario where the TqsStack will fail despite the high coverage level? To which extent can one rely on code coverage to assess quality of your code?
+
+Mesmo com alta cobertura, o TqsStack pode falhar em cenários não testados ou extremos, por exemplo:  
+	* Uso concorrente por múltiplas threads (não thread-safe)    
+	*	Inserção de tipos inesperados ou null se não previsto  
+	*	Limites de memória (muito grande número de elementos)  
+	*	Comportamentos dependentes de implementação interna, como exceções específicas não testadas
+
+# Ex1.4
+## Business rules:
+
+  - Reserva única por estudante por dia
+	- Capacidade máxima do turno
+	-	Check-in altera o estado da reserva
+	-	Check-in múltiplo não permitido
+	-	Cancelamento invalida reserva 
+  - Check-in com token inválido
+	-	Cancelar reserva já usada
+	-	Reserva em data futura ou passada fora do permitido
+	-	Concorrência
+
+### Coverage Com Jacoco
+![cov_jacoco](images/jacoco_ex1.4.png)  
+### Branches Coverage
+![cov_jacoco_branches](images/jacoco_branches_ex1.4.png)
+
+  
 # Ex3.1 - What is Spring Boot?
 
 ## O que é uma enterprise application?
@@ -253,3 +469,9 @@ Para este requisito, os testes centrais que eu recomendaria são:
 Em **Spring Boot**, estes testes podem ser implementados com **@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)** para integração completa, **@TestPropertySource** para configurar uma base de dados de teste (PostgreSQL, H2, etc.) e **TestRestTemplate** para chamadas HTTP aos endpoints.
 
 # Ex4.4
+sqp_ca0cf9b0ee96716491dd15083ff4df8ae315657d
+mvn clean verify sonar:sonar \
+-Dsonar.projectKey=ex7.2 \
+-Dsonar.projectName='ex7.2' \
+-Dsonar.host.url=http://127.0.0.1:9000 \
+-Dsonar.token=sqp_ca0cf9b0ee96716491dd15083ff4df8ae315657d

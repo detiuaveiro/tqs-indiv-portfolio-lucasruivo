@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: test.java.TqsStackTestAI
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.063 s <<< FAILURE! -- in test.java.TqsStackTestAI
+test.java.TqsStackTestAI.popTopNTooBig -- Time elapsed: 0.003 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <java.util.NoSuchElementException> but was: <java.lang.IllegalArgumentException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at test.java.TqsStackTestAI.popTopNTooBig(TqsStackTest.java:109)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+Caused by: java.lang.IllegalArgumentException: Invalid n: 2
+	at tqs.TqsStack.popTopN(TqsStack.java:43)
+	at test.java.TqsStackTestAI.lambda$popTopNTooBig$0(TqsStackTest.java:109)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
