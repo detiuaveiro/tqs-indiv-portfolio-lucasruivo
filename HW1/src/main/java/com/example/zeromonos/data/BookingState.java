@@ -4,5 +4,6 @@ public enum BookingState {
     RECEBIDO,
     ATRIBUIDO,
     EM_PROG,
-    CONCLUIDO
+    CONCLUIDO,
+    CANCELADO
 }

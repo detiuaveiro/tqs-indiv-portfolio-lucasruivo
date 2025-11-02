@@ -1,8 +1,10 @@
 package com.example.zeromonos.boundary;
 
 import com.example.zeromonos.data.Booking;
+import com.example.zeromonos.data.BookingState;
 import com.example.zeromonos.service.BookingService;
-import org.springframework.http.ResponseEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,38 +13,58 @@ import java.util.List;
 @RequestMapping("/api/bookings")
 public class BookingController {
 
-    private final BookingService service;
+    private final BookingService bookingService;
+    private static final Logger logger = LoggerFactory.getLogger(BookingController.class);
 
-    public BookingController(BookingService service) {
-        this.service = service;
+    public BookingController(BookingService bookingService) {
+        this.bookingService = bookingService;
     }
 
+    // Criar novo booking
     @PostMapping
-    public ResponseEntity<Booking> createBooking(@RequestBody Booking booking) {
+    public Booking createBooking(@RequestBody Booking booking) {
+        logger.info("Criar novo booking: município={}, data={}, timeslot={}", 
+                    booking.getMunicipality(), booking.getRequestedDate(), booking.getTimeSlot());
+        return bookingService.createBooking(booking);
+    }
+
+    // Encontrar booking pelo token
+    @GetMapping("/{token}")
+    public Booking getBooking(@PathVariable String token) {
+        logger.info("Consultar booking pelo token: {}", token);
+        return bookingService.getBookingByToken(token)
+                .orElseThrow(() -> new RuntimeException("Booking não encontrado"));
+    }
+
+    // Listar bookings por município
+    @GetMapping
+    public List<Booking> getBookingsByMunicipality(@RequestParam(required = false) String municipality) {
+        if (municipality != null ) {
+            logger.info("Listar bookings para município: {}", municipality);
+            return bookingService.getBookingsByMunicipality(municipality);
+        }
+        logger.info("Listar todos os bookings");
+        return bookingService.getAllBookings();
+    }
+
+    // Atualizar estado de um booking
+    @PutMapping("/{token}")
+    public Booking updateStatus(@PathVariable String token, @RequestParam String status) {
         try {
-            Booking saved = service.createBooking(booking);
-            return ResponseEntity.ok(saved);
+            BookingState novoEstado = BookingState.valueOf(status.toUpperCase());
+            logger.info("Atualizar booking token={} para estado={}", token, novoEstado);
+            return bookingService.updateBookingStatus(token, novoEstado);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(null);
+            logger.warn("Tentativa de atualizar booking token={} para estado inválido: {}", token, status);
+            throw new RuntimeException("Estado inválido: " + status +
+                    ". Valores válidos: " + java.util.Arrays.toString(BookingState.values()));
         }
     }
 
-    @GetMapping("/{token}")
-    public ResponseEntity<Booking> getBooking(@PathVariable String token) {
-        return service.getBookingByToken(token)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    @GetMapping
-    public List<Booking> getBookingsByMunicipality(@RequestParam String municipality) {
-        return service.getBookingsByMunicipality(municipality);
-    }
-
-    @PutMapping("/{token}/status")
-    public ResponseEntity<Booking> updateStatus(@PathVariable String token, @RequestParam String status) {
-        Booking updated = service.updateBookingStatus(token, status);
-        if (updated != null) return ResponseEntity.ok(updated);
-        else return ResponseEntity.notFound().build();
+    // Cancelar um booking
+    @DeleteMapping("/{token}")
+    public Booking cancelBooking(@PathVariable String token) {
+        logger.info("Cancelar booking token={}", token);
+        return bookingService.updateBookingStatus(token, BookingState.CANCELADO);
     }
 }
