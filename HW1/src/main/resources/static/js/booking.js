@@ -44,12 +44,10 @@ document.getElementById("bookingForm").addEventListener("submit", e => {
     body: JSON.stringify(booking)
   })
   .then(resp => {
-    if (!resp.ok) return resp.json().then(err => { throw new Error(err.message); });
+    if (!resp.ok) return resp.json().then(err => { throw new Error(err.error); });
     return resp.json();
   })
-  .then(data => {
-    alert("Pedido criado com sucesso! Guarde o seu código: \n" + data.token);
-  })
+  .then(data => alert("Pedido criado com sucesso! Guarde o seu código: \n" + data.token))
   .catch(err => alert("Erro: " + err.message));
 });
 

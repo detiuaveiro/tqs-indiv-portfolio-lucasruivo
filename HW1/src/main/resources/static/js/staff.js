@@ -3,7 +3,6 @@ const tableBody = document.querySelector("#bookingsTable tbody");
 
 loadBtn.addEventListener("click", async () => {
   const municipality = document.getElementById("municipalityInput").value.trim();
-  
   const url = municipality
     ? `/api/bookings?municipality=${encodeURIComponent(municipality)}`
     : `/api/bookings`;
@@ -16,21 +15,26 @@ loadBtn.addEventListener("click", async () => {
 
     bookings.forEach(b => {
       const status = (b.status || "").toUpperCase();
-      const isCancelled = status === "CANCELADO";
+
+      // Determinar qual botão deve aparecer
+      let actionButton = '';
+      if (status === "RECEBIDO") {
+        actionButton = `<button onclick="updateStatus('${b.token}', 'EM_PROG')">Em Progresso</button>`;
+      } else if (status === "EM_PROG") {
+        actionButton = `<button onclick="updateStatus('${b.token}', 'CONCLUIDO')">Concluído</button>`;
+      } else {
+        // CANCELADO ou CONCLUIDO: não mostrar botões
+        actionButton = '<em>--------------</em>';
+      }
 
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td>${b.municipality}</td>
         <td>${b.description}</td>
         <td>${b.requestedDate}</td>
-        <td>${b.timeSlot || b.timeslot || "—"}</td>
+        <td>${b.timeSlot || "—"}</td>
         <td>${status}</td>
-        <td>
-          ${!isCancelled ? `
-            <button onclick="updateStatus('${b.token}', 'EM_PROG')">Em Progresso</button>
-            <button onclick="updateStatus('${b.token}', 'CONCLUIDO')">Concluído</button>
-          ` : '<em>--------------</em>'}
-        </td>
+        <td>${actionButton}</td>
       `;
       tableBody.appendChild(tr);
     });
@@ -40,7 +44,17 @@ loadBtn.addEventListener("click", async () => {
 });
 
 async function updateStatus(token, status) {
-  await fetch(`/api/bookings/${token}?status=${status}`, { method: "PUT" });
-  alert(`Estado atualizado para ${status}`);
-  loadBtn.click(); // recarrega imediatamente a tabela
+  try {
+    const resp = await fetch(`/api/bookings/${token}?status=${status}`, { method: "PUT" });
+
+    if (!resp.ok) {
+      const errMsg = await resp.text();
+      throw new Error(errMsg);
+    }
+
+    alert(`Estado atualizado para ${status}`);
+    loadBtn.click(); // recarrega a tabela
+  } catch (err) {
+    alert(`Erro ao atualizar estado: ${err.message}`);
+  }
 }
