@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.RunCucumberTest" time="0.06" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.RunCucumberTest" time="0.061" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="PT"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.2/target/surefire/surefirebooter-20251021150021705_3.jar /Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.2/target/surefire 2025-10-21T15-00-21_611-jvmRun1 surefire-20251021150021705_1tmp surefire_0-20251021150021705_2tmp"/>
+    <property name="sun.java.command" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.2/target/surefire/surefirebooter-20251103185451460_3.jar /Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.2/target/surefire 2025-11-03T18-54-51_355-jvmRun1 surefire-20251103185451460_1tmp surefire_0-20251103185451460_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.2/target/test-classes:/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.2/target/classes:/Users/lucas/.m2/repository/io/cucumber/cucumber-java/7.11.1/cucumber-java-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-core/7.11.1/cucumber-core-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-gherkin/7.11.1/cucumber-gherkin-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-gherkin-messages/7.11.1/cucumber-gherkin-messages-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/gherkin/26.0.3/gherkin-26.0.3.jar:/Users/lucas/.m2/repository/io/cucumber/messages/21.0.1/messages-21.0.1.jar:/Users/lucas/.m2/repository/io/cucumber/tag-expressions/5.0.1/tag-expressions-5.0.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-expressions/16.1.2/cucumber-expressions-16.1.2.jar:/Users/lucas/.m2/repository/io/cucumber/datatable/7.11.1/datatable-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-plugin/7.11.1/cucumber-plugin-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/docstring/7.11.1/docstring-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/html-formatter/20.2.1/html-formatter-20.2.1.jar:/Users/lucas/.m2/repository/io/cucumber/junit-xml-formatter/0.1.0/junit-xml-formatter-0.1.0.jar:/Users/lucas/.m2/repository/io/cucumber/ci-environment/9.1.0/ci-environment-9.1.0.jar:/Users/lucas/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-junit-platform-engine/7.11.1/cucumber-junit-platform-engine-7.11.1.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/lucas/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite/1.9.2/junit-platform-suite-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite-api/1.9.2/junit-platform-suite-api-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite-engine/1.9.2/junit-platform-suite-engine-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite-commons/1.9.2/junit-platform-suite-commons-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.2/target/surefire/surefirebooter-20251021150021705_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.2/target/surefire/surefirebooter-20251103185451460_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="25"/>
@@ -114,7 +114,7 @@ The result is undefined due to division by zero.
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe result is undefined&amp#27;[0m        &amp#27;[90m# com.example.StepDefinitions.the_result_is_undefined()&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Single digits" time="0.001">
+  <testcase name="Example #1.1" classname="Single digits" time="0.002">
     <system-out><![CDATA[
 Scenario Outline: Several additions   &amp#27;[90m# com/example/calculator.feature:30&amp#27;[0m
 Calculator is turned on
@@ -136,7 +136,7 @@ The result is 10
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32mthe result is &amp#27;[0m&amp#27;[32m&amp#27;[1m10&amp#27;[0m               &amp#27;[90m# com.example.StepDefinitions.the_result_is(java.lang.Integer)&amp#27;[0m
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.3" classname="Single digits" time="0.001">
+  <testcase name="Example #1.3" classname="Single digits" time="0.002">
     <system-out><![CDATA[
 Scenario Outline: Several additions   &amp#27;[90m# com/example/calculator.feature:32&amp#27;[0m
 Calculator is turned on
