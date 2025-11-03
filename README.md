@@ -484,4 +484,4 @@ mvn clean verify sonar:sonar \
 -Dsonar.projectKey=ex7.2 \
 -Dsonar.projectName='ex7.2' \
 -Dsonar.host.url=http://127.0.0.1:9000 \
--Dsonar.token=sqp_ca0cf9b0ee96716491dd15083ff4df8ae315657d
+-Dsonar.token=sqp_ca0cf9b0ee96716491dd15083ff4df8ae315657d 
