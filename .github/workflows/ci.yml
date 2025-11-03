@@ -1,25 +1,30 @@
-name: CI Pipeline
+name: Java CI - HW1
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout código
+      # 1️⃣ Clonar o repositório
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Configurar Java
+      # 2️⃣ Instalar JDK
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '17'
           distribution: 'temurin'
 
-      - name: Instalar dependências e correr testes
-        working-directory: ./HW1
-        run: mvn clean test --batch-mode
+      # 3️⃣ Construir e correr testes na pasta HW1
+      - name: Build and test HW1
+        run: |
+          cd HW1
+          mvn clean test
