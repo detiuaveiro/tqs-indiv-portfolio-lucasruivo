@@ -2,12 +2,12 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: [ main ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,8 +17,9 @@ jobs:
       - name: Configurar Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
           java-version: '21'
+          distribution: 'temurin'
 
-      - name: Instalar dependências e testar
-        run: mvn clean verify --no-transfer-progress
+      - name: Instalar dependências e correr testes
+        working-directory: ./HW1
+        run: mvn clean test --batch-mode
