@@ -6,6 +6,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -16,7 +18,11 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class StaffFunctionalTest {
+
+    @LocalServerPort
+    private int port; 
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -29,6 +35,7 @@ class StaffFunctionalTest {
 
     @BeforeEach
     void setup() throws Exception {
+
         // --- Criar novo booking via API ---
         HttpClient client = HttpClient.newHttpClient();
         String bookingJson = """
@@ -41,7 +48,7 @@ class StaffFunctionalTest {
         """;
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/api/bookings"))
+                .uri(URI.create("http://localhost:" + port + "/api/bookings"))
                 .header("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(bookingJson))
                 .build();
@@ -53,7 +60,7 @@ class StaffFunctionalTest {
         assertThat(bookingToken).isNotBlank();
 
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     @AfterEach
@@ -63,7 +70,7 @@ class StaffFunctionalTest {
 
     @Test
     void shouldFindAndChangeCreatedBookingStatus() {
-        driver.get("http://localhost:8080/staff.html");
+        driver.get("http://localhost:" + port + "/staff.html");
 
         WebElement municipalityInput = driver.findElement(By.id("municipalityInput"));
         WebElement loadBtn = driver.findElement(By.id("loadBtn"));

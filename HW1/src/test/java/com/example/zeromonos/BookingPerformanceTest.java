@@ -1,6 +1,8 @@
 package com.example.zeromonos;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -10,7 +12,11 @@ import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class BookingPerformanceTest {
+
+    @LocalServerPort
+    private int port;
 
     private final HttpClient client = HttpClient.newHttpClient();
 
@@ -26,7 +32,7 @@ class BookingPerformanceTest {
         """;
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/api/bookings"))
+                .uri(URI.create("http://localhost:" + port + "/api/bookings"))
                 .header("Content-Type", "application/json")
                 .timeout(Duration.ofSeconds(5))
                 .POST(HttpRequest.BodyPublishers.ofString(bookingJson))

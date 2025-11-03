@@ -2,19 +2,22 @@ package com.example.zeromonos;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
 import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CitizenFunctionalTest {
+
+    @LocalServerPort
+    private int port;  // Porta aleatória do Spring Boot
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -37,7 +40,8 @@ class CitizenFunctionalTest {
 
     @Test
     void shouldCreateConsultAndCancelBooking() {
-        driver.get("http://localhost:8080/index.html");
+        // Usar a porta aleatória do Spring Boot
+        driver.get("http://localhost:" + port + "/index.html");
 
         // --- Preencher formulário ---
         WebElement municipality = driver.findElement(By.id("municipality"));
@@ -52,21 +56,22 @@ class CitizenFunctionalTest {
         );
 
         // Esperar pelo select de horários estar populado
-        wait.until(driver -> driver.findElements(By.cssSelector("#timeslot option")).size() > 0);
+        wait.until(d -> d.findElements(By.cssSelector("#timeslot option")).size() > 0);
         WebElement timeslot = driver.findElement(By.id("timeslot"));
-
-        WebElement submitBtn = driver.findElement(By.cssSelector("button[type='submit']"));
 
         // Preencher restante formulário
         municipality.sendKeys("Lisboa");
         description.sendKeys("Teste funcional");
         timeslot.sendKeys("09:00-11:00");
+
         // Esperar que todos os campos estejam com valor definido
-        wait.until(driver -> !municipality.getAttribute("value").isEmpty());
-        wait.until(driver -> !description.getAttribute("value").isEmpty());
-        wait.until(driver -> !timeslot.getAttribute("value").isEmpty());
+        wait.until(d -> !municipality.getDomProperty("value").isEmpty());
+        wait.until(d -> !description.getDomProperty("value").isEmpty());
+        wait.until(d -> !timeslot.getDomProperty("value").isEmpty());
+
         // Submeter o formulário via JS para disparar o listener corretamente
-        ((JavascriptExecutor) driver).executeScript("document.getElementById('bookingForm').dispatchEvent(new Event('submit', {bubbles: true, cancelable: true}));");
+        ((JavascriptExecutor) driver)
+                .executeScript("document.getElementById('bookingForm').dispatchEvent(new Event('submit', {bubbles: true, cancelable: true}));");
 
         // --- Verificar mensagem de sucesso ---
         WebElement bookingSuccess = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("bookingSuccess")));
@@ -96,7 +101,7 @@ class CitizenFunctionalTest {
         driver.switchTo().alert().accept();
 
         // Esperar que o status seja atualizado para CANCELADO
-        wait.until(driver -> resultDiv.getText().contains("Estado: CANCELADO"));
+        wait.until(d -> resultDiv.getText().contains("Estado: CANCELADO"));
         assertThat(resultDiv.getText()).contains("CANCELADO");
     }
 }
