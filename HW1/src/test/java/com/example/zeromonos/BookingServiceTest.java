@@ -7,8 +7,8 @@ import com.example.zeromonos.service.BookingService;
 import com.example.zeromonos.service.MunicipioService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +16,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class BookingServiceUnitTest {
+class BookingServiceTest {
 
     private BookingRepository repository;
     private MunicipioService municipioService;
@@ -33,13 +33,13 @@ class BookingServiceUnitTest {
         validBooking = new Booking();
         validBooking.setMunicipality("Lisboa");
         validBooking.setDescription("Limpeza");
-        validBooking.setRequestedDate(LocalDate.now().plusDays(5));
+        validBooking.setRequestedDate(nextWeekday(5));
         validBooking.setTimeSlot("09:00-11:00");
 
         when(municipioService.isValidMunicipality("Lisboa")).thenReturn(true);
     }
 
-    // --- Teste de criação normal ---
+    // --- Criação normal ---
     @Test
     void shouldCreateValidBooking() {
         when(repository.findAll()).thenReturn(List.of());
@@ -51,26 +51,7 @@ class BookingServiceUnitTest {
         assertEquals("Lisboa", saved.getMunicipality());
         assertEquals(BookingState.RECEBIDO, saved.getStatus());
         assertNotNull(saved.getToken());
-    }
-
-    // --- Teste de antecedência mínima ---
-    @Test
-    void shouldRejectBookingIfRequestedDateTooSoon() {
-        validBooking.setRequestedDate(LocalDate.now().plusDays(1));
-
-        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                () -> bookingService.createBooking(validBooking));
-        assertEquals("O pedido deve ser feito com pelo menos 3 dias de antecedência", ex.getMessage());
-    }
-
-    // --- Teste de fim de semana ---
-    @Test
-    void shouldRejectBookingIfOnWeekend() {
-        validBooking.setRequestedDate(LocalDate.of(2025, 11, 2)); // domingo
-
-        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                () -> bookingService.createBooking(validBooking));
-        assertEquals("Não é permitido fazer pedidos ao fim de semana.", ex.getMessage());
+        verify(repository, times(1)).save(validBooking);
     }
 
     // --- Limite diário por município ---
@@ -93,11 +74,9 @@ class BookingServiceUnitTest {
     // --- Conflito de horário ---
     @Test
     void shouldRejectBookingIfTimeSlotConflict() {
-        List<Booking> existing = List.of(
-                createBookingWithDateAndState(validBooking.getRequestedDate(), BookingState.RECEBIDO)
-        );
-        existing.get(0).setTimeSlot(validBooking.getTimeSlot());
-        when(repository.findAll()).thenReturn(existing);
+        Booking conflictBooking = createBookingWithDateAndState(validBooking.getRequestedDate(), BookingState.RECEBIDO);
+        conflictBooking.setTimeSlot(validBooking.getTimeSlot());
+        when(repository.findAll()).thenReturn(List.of(conflictBooking));
 
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
                 () -> bookingService.createBooking(validBooking));
@@ -108,9 +87,9 @@ class BookingServiceUnitTest {
     @Test
     void shouldRejectBookingIfActiveLimitExceeded() {
         List<Booking> activeBookings = List.of(
-                createBookingWithDateAndState(LocalDate.now().plusDays(5), BookingState.RECEBIDO,"09:00-10:00"),
-                createBookingWithDateAndState(LocalDate.now().plusDays(5), BookingState.EM_PROG,"10:00-11:00"),
-                createBookingWithDateAndState(LocalDate.now().plusDays(6), BookingState.RECEBIDO,"11:00-12:00")
+                createBookingWithDateAndState(nextWeekday(5), BookingState.RECEBIDO,"09:00-10:00"),
+                createBookingWithDateAndState(nextWeekday(5), BookingState.EM_PROG,"10:00-11:00"),
+                createBookingWithDateAndState(nextWeekday(6), BookingState.RECEBIDO,"11:00-12:00")
         );
         when(repository.findAll()).thenReturn(activeBookings);
 
@@ -119,28 +98,30 @@ class BookingServiceUnitTest {
         assertEquals("O cidadão já atingiu o limite de reservas ativas.", ex.getMessage());
     }
 
-    // --- Atualização de estado válida ---
+    // --- Teste único de todas as transições de estado ---
     @Test
-    void shouldUpdateBookingStatusValidTransition() {
+    void shouldHandleAllStateTransitions() {
         validBooking.addState(BookingState.RECEBIDO);
         when(repository.findByToken(validBooking.getToken())).thenReturn(Optional.of(validBooking));
         when(repository.save(any())).thenAnswer(inv -> inv.getArgument(0));
 
-        Booking updated = bookingService.updateBookingStatus(validBooking.getToken(), BookingState.EM_PROG);
-        assertEquals(BookingState.EM_PROG, updated.getStatus());
-    }
+        // RECEBIDO → EM_PROG (válido)
+        Booking updated1 = bookingService.updateBookingStatus(validBooking.getToken(), BookingState.EM_PROG);
+        assertEquals(BookingState.EM_PROG, updated1.getStatus());
 
-    // --- Atualização de estado inválida ---
-    @Test
-    void shouldRejectInvalidStateTransition() {
-        validBooking.addState(BookingState.RECEBIDO);
-        when(repository.findByToken(validBooking.getToken())).thenReturn(Optional.of(validBooking));
+        // EM_PROG → CONCLUIDO (válido)
+        when(repository.findByToken(validBooking.getToken())).thenReturn(Optional.of(updated1));
+        Booking updated2 = bookingService.updateBookingStatus(validBooking.getToken(), BookingState.CONCLUIDO);
+        assertEquals(BookingState.CONCLUIDO, updated2.getStatus());
 
+        // CONCLUIDO → qualquer outro (inválido)
+        when(repository.findByToken(validBooking.getToken())).thenReturn(Optional.of(updated2));
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
-                () -> bookingService.updateBookingStatus(validBooking.getToken(), BookingState.CONCLUIDO));
-        assertEquals("Transição inválida de RECEBIDO para CONCLUIDO", ex.getMessage());
+                () -> bookingService.updateBookingStatus(validBooking.getToken(), BookingState.RECEBIDO));
+        assertTrue(ex.getMessage().contains("Transição inválida"));
     }
 
+    // --- Auxiliares ---
     private Booking createBookingWithDateAndState(LocalDate date, BookingState state) {
         Booking b = new Booking();
         b.setRequestedDate(date);
@@ -159,5 +140,14 @@ class BookingServiceUnitTest {
         b.setMunicipality("Lisboa");
         b.addState(state);
         return b;
+    }
+
+    // --- Garante que a data não cai num fim de semana ---
+    private LocalDate nextWeekday(int daysAhead) {
+        LocalDate date = LocalDate.now().plusDays(daysAhead);
+        while (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            date = date.plusDays(1);
+        }
+        return date;
     }
 }

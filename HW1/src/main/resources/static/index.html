@@ -7,6 +7,7 @@
 </head>
 <body>
   <h1>Pedido de Recolha de Lixo</h1>
+  
   <!-- Formulário -->
   <section>
     <h2>Novo Pedido de Recolha</h2>
@@ -25,6 +26,10 @@
 
       <button type="submit">Submeter Pedido</button>
     </form>
+
+    <!-- Mensagens -->
+    <div id="bookingSuccess" style="color: green;"></div>
+    <div id="bookingError" style="color: red;"></div>
   </section>
 
   <!-- Consulta por token -->
@@ -34,8 +39,10 @@
     <input type="text" id="tokenInput" placeholder="Ex: 502be1ad-e9d3-44f1-a317-e7869849a069">
     <button id="checkBtn">Ver Pedido</button>
     <div id="statusResult"></div>
+
+    <!-- Mensagem de cancelamento -->
+    <div id="cancelMessage" style="color: blue;"></div>
   </section>
 
   <script src="js/booking.js"></script>
 </body>
-</html>

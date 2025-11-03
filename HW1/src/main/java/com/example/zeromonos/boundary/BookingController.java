@@ -5,7 +5,9 @@ import com.example.zeromonos.data.BookingState;
 import com.example.zeromonos.service.BookingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -47,17 +49,18 @@ public class BookingController {
         return bookingService.getAllBookings();
     }
 
-    // Atualizar estado de um booking
     @PutMapping("/{token}")
-    public Booking updateStatus(@PathVariable String token, @RequestParam String status) {
+    public Booking updateBookingStatus(@PathVariable String token, @RequestParam String status) {
         try {
-            BookingState novoEstado = BookingState.valueOf(status.toUpperCase());
-            logger.info("Atualizar booking token={} para estado={}", token, novoEstado);
-            return bookingService.updateBookingStatus(token, novoEstado);
+            BookingState newState = BookingState.valueOf(status);
+            logger.info("Atualizar booking token={} para estado={}", token, newState);
+            return bookingService.updateBookingStatus(token, newState);
         } catch (IllegalArgumentException e) {
             logger.warn("Tentativa de atualizar booking token={} para estado inválido: {}", token, status);
-            throw new RuntimeException("Estado inválido: " + status +
-                    ". Valores válidos: " + java.util.Arrays.toString(BookingState.values()));
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Estado inválido: " + status + ". Valores válidos: " + java.util.Arrays.toString(BookingState.values())
+            );
         }
     }
 

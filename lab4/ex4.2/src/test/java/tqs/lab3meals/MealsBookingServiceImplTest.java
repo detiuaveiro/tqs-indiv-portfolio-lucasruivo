@@ -9,7 +9,6 @@ import tqs.lab3meals.services.MealsBookingServiceImpl;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static java.lang.invoke.MethodHandles.lookup;

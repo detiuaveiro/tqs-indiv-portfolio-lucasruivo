@@ -1,6 +1,9 @@
 const municipalitySelect = document.getElementById("municipality");
 const timeslotSelect = document.getElementById("timeslot");
 const resultDiv = document.getElementById("statusResult");
+const bookingSuccess = document.getElementById("bookingSuccess");
+const bookingError = document.getElementById("bookingError");
+const cancelMessage = document.getElementById("cancelMessage");
 
 // === Preencher municípios ===
 fetch("/api/municipios")
@@ -13,13 +16,12 @@ fetch("/api/municipios")
       municipalitySelect.appendChild(opt);
     });
   })
-  .catch(err => alert("Erro ao carregar municípios: " + err.message));
+  .catch(err => {
+    bookingError.textContent = "Erro ao carregar municípios: " + err.message;
+  });
 
 // === Preencher timeslots ===
-const timeslots = [
-  "09:00-11:00", "11:00-13:00", "13:00-15:00",
-  "15:00-17:00", "17:00-19:00"
-];
+const timeslots = ["09:00-11:00","11:00-13:00","13:00-15:00","15:00-17:00","17:00-19:00"];
 timeslots.forEach(slot => {
   const opt = document.createElement("option");
   opt.value = slot;
@@ -30,6 +32,8 @@ timeslots.forEach(slot => {
 // === Submeter novo pedido ===
 document.getElementById("bookingForm").addEventListener("submit", e => {
   e.preventDefault();
+  bookingSuccess.textContent = "";
+  bookingError.textContent = "";
 
   const booking = {
     municipality: municipalitySelect.value,
@@ -47,14 +51,23 @@ document.getElementById("bookingForm").addEventListener("submit", e => {
     if (!resp.ok) return resp.json().then(err => { throw new Error(err.error); });
     return resp.json();
   })
-  .then(data => alert("Pedido criado com sucesso! Guarde o seu código: \n" + data.token))
-  .catch(err => alert("Erro: " + err.message));
+  .then(data => {
+    bookingSuccess.textContent = "Pedido criado com sucesso! Guarde o seu código: " + data.token;
+  })
+  .catch(err => {
+    bookingError.textContent = "Erro: " + err.message;
+  });
 });
 
 // === Ver pedido por token ===
 document.getElementById("checkBtn").addEventListener("click", async () => {
   const token = document.getElementById("tokenInput").value.trim();
-  if (!token) return alert("Introduza um código de pedido!");
+  resultDiv.innerHTML = "";
+  cancelMessage.textContent = "";
+  if (!token) {
+    bookingError.textContent = "Introduza um código de pedido!";
+    return;
+  }
 
   try {
     const resp = await fetch(`/api/bookings/${token}`);
@@ -69,18 +82,20 @@ document.getElementById("checkBtn").addEventListener("click", async () => {
       ${b.status !== 'CANCELADO' ? `<button onclick="cancelBooking('${b.token}')">Cancelar Pedido</button>` : ''}
     `;
   } catch (err) {
-    alert(err.message);
+    bookingError.textContent = err.message;
   }
 });
 
 // === Cancelar pedido ===
 async function cancelBooking(token) {
+  cancelMessage.textContent = "";
   if (!confirm("Tem a certeza que quer cancelar este pedido?")) return;
+  
   const resp = await fetch(`/api/bookings/${token}`, { method: "DELETE" });
   if (resp.ok) {
-    alert("Pedido cancelado com sucesso.");
+    cancelMessage.textContent = "Pedido cancelado com sucesso.";
     document.getElementById("checkBtn").click();
   } else {
-    alert("Erro ao cancelar pedido.");
+    cancelMessage.textContent = "Erro ao cancelar pedido.";
   }
 }

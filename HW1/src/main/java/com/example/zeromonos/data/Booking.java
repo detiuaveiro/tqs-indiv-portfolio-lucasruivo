@@ -1,6 +1,7 @@
 package com.example.zeromonos.data;
 
 import jakarta.persistence.*;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +31,41 @@ public class Booking {
         addState(BookingState.RECEBIDO);
     }
 
+    // --- Validação interna (regras do domínio) ---
+    public void validateSelf() {
+        if (municipality == null || municipality.isBlank()) {
+            throw new IllegalArgumentException("Município é obrigatório.");
+        }
+        if (description == null || description.isBlank()) {
+            throw new IllegalArgumentException("Descrição é obrigatória.");
+        }
+        if (requestedDate == null) {
+            throw new IllegalArgumentException("Data solicitada é obrigatória.");
+        }
+        if (timeSlot == null || timeSlot.isBlank()) {
+            throw new IllegalArgumentException("Time slot é obrigatório.");
+        }
+
+        // Não pode ser fim de semana
+        if (requestedDate.getDayOfWeek() == DayOfWeek.SATURDAY ||
+            requestedDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            throw new IllegalArgumentException("Não é permitido fazer pedidos ao fim de semana.");
+        }
+
+        // Deve ter pelo menos 3 dias de antecedência
+        if (requestedDate.isBefore(LocalDate.now().plusDays(3))) {
+            throw new IllegalArgumentException("O pedido deve ser feito com pelo menos 3 dias de antecedência");
+        }
+    }
+
+    // --- Transições de estado ---
     public void addState(BookingState status) {
         this.status = status;
         BookingStateHistory history = new BookingStateHistory(this, status);
         this.stateHistory.add(history);
     }
 
-    // Getters e Setters
-    public UUID getId() { return id; }
+    // --- Getters e Setters ---
     public String getMunicipality() { return municipality; }
     public void setMunicipality(String municipality) { this.municipality = municipality; }
     public String getDescription() { return description; }
