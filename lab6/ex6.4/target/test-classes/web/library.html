@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Fake Online Library</title>
+  <script src="library.js"></script>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 6px; }
+    #no-results { color: red; display: none; }
+  </style>
+</head>
+<body>
+  <h1>Fake Online Library</h1>
+
+  <div>
+    <label>Author: <input id="authorInput" type="text" /></label>
+    <label>Category: <input id="categoryInput" type="text" /></label>
+    <label>Title: <input id="titleInput" type="text" /></label>
+    <label>From: <input id="fromDate" type="date" /></label>
+    <label>To: <input id="toDate" type="date" /></label>
+    <button id="searchBtn" onclick="filterBooks()">Search</button>
+    <button id="clearBtn" onclick="clearFilters()">Clear</button>
+  </div>
+
+  <p id="no-results">No books found</p>
+
+  <table>
+    <thead>
+      <tr><th>Title</th><th>Author</th><th>Category</th><th>Published</th></tr>
+    </thead>
+    <tbody id="books">
+      <!-- populated dynamically -->
+    </tbody>
+  </table>
+
+  <script>
+    // small client-side helper to initialize with an empty set
+    document.addEventListener('DOMContentLoaded', function () {
+      populateBooks([]);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.RunCucumberTest" time="0.071" tests="8" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.3/target/test-classes:/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.3/target/classes:/Users/lucas/.m2/repository/io/cucumber/cucumber-java/7.11.1/cucumber-java-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-core/7.11.1/cucumber-core-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-gherkin/7.11.1/cucumber-gherkin-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-gherkin-messages/7.11.1/cucumber-gherkin-messages-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/gherkin/26.0.3/gherkin-26.0.3.jar:/Users/lucas/.m2/repository/io/cucumber/messages/21.0.1/messages-21.0.1.jar:/Users/lucas/.m2/repository/io/cucumber/tag-expressions/5.0.1/tag-expressions-5.0.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-expressions/16.1.2/cucumber-expressions-16.1.2.jar:/Users/lucas/.m2/repository/io/cucumber/datatable/7.11.1/datatable-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-plugin/7.11.1/cucumber-plugin-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/docstring/7.11.1/docstring-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/html-formatter/20.2.1/html-formatter-20.2.1.jar:/Users/lucas/.m2/repository/io/cucumber/junit-xml-formatter/0.1.0/junit-xml-formatter-0.1.0.jar:/Users/lucas/.m2/repository/io/cucumber/ci-environment/9.1.0/ci-environment-9.1.0.jar:/Users/lucas/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-junit-platform-engine/7.11.1/cucumber-junit-platform-engine-7.11.1.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/lucas/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite/1.9.2/junit-platform-suite-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite-api/1.9.2/junit-platform-suite-api-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite-engine/1.9.2/junit-platform-suite-engine-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite-commons/1.9.2/junit-platform-suite-commons-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="PT"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.3/target/surefire/surefirebooter-20251103235314173_3.jar /Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.3/target/surefire 2025-11-03T23-53-14_083-jvmRun1 surefire-20251103235314173_1tmp surefire_0-20251103235314173_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.3/target/test-classes:/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.3/target/classes:/Users/lucas/.m2/repository/io/cucumber/cucumber-java/7.11.1/cucumber-java-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-core/7.11.1/cucumber-core-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-gherkin/7.11.1/cucumber-gherkin-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-gherkin-messages/7.11.1/cucumber-gherkin-messages-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/gherkin/26.0.3/gherkin-26.0.3.jar:/Users/lucas/.m2/repository/io/cucumber/messages/21.0.1/messages-21.0.1.jar:/Users/lucas/.m2/repository/io/cucumber/tag-expressions/5.0.1/tag-expressions-5.0.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-expressions/16.1.2/cucumber-expressions-16.1.2.jar:/Users/lucas/.m2/repository/io/cucumber/datatable/7.11.1/datatable-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-plugin/7.11.1/cucumber-plugin-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/docstring/7.11.1/docstring-7.11.1.jar:/Users/lucas/.m2/repository/io/cucumber/html-formatter/20.2.1/html-formatter-20.2.1.jar:/Users/lucas/.m2/repository/io/cucumber/junit-xml-formatter/0.1.0/junit-xml-formatter-0.1.0.jar:/Users/lucas/.m2/repository/io/cucumber/ci-environment/9.1.0/ci-environment-9.1.0.jar:/Users/lucas/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/lucas/.m2/repository/io/cucumber/cucumber-junit-platform-engine/7.11.1/cucumber-junit-platform-engine-7.11.1.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/lucas/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite/1.9.2/junit-platform-suite-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite-api/1.9.2/junit-platform-suite-api-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite-engine/1.9.2/junit-platform-suite-engine-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-suite-commons/1.9.2/junit-platform-suite-commons-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/Users/lucas/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/lucas"/>
+    <property name="user.language" value="pt"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-09-16"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.3"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.3/target/surefire/surefirebooter-20251103235314173_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="25"/>
+    <property name="user.name" value="lucas"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="15.1.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/lucas/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/7z/s7g3mmpn7vd1rqljq4jz0gqm0000gn/T/"/>
+    <property name="java.version" value="25"/>
+    <property name="user.dir" value="/Users/lucas/Desktop/TQS/tqs-indiv-portfolio-lucasruivo/lab6/ex6.3"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/lucas/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="25"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="Search for books by author" classname="Book Search" time="0.024">
+    <system-out><![CDATA[
+Scenario: Search for books by author               &amp#27;[90m# com/example/example.feature:11&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32man empty book database&amp#27;[0m                     &amp#27;[90m# com.example.StepDefinitions.anEmptyBookDatabase()&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe following books exist:&amp#27;[0m                 &amp#27;[90m# com.example.StepDefinitions.theFollowingBooksExist(io.cucumber.datatable.DataTable)&amp#27;[0m
+    | title                         | author          | category | published  |
+    | Harry Potter and the Sorcerer | J.K. Rowling    | Fantasy  | 1997-06-26 |
+    | A Brief History of Time       | Stephen Hawking | Science  | 1988-04-01 |
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI search for books by author &amp#27;[0m&amp#27;[32m&amp#27;[1m"J.K. Rowling"&amp#27;[0m &amp#27;[90m# com.example.StepDefinitions.iSearchForBooksByAuthor(java.lang.String)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should see &amp#27;[0m&amp#27;[32m&amp#27;[1m1&amp#27;[0m&amp#27;[32m book(s) in the results&amp#27;[0m       &amp#27;[90m# com.example.StepDefinitions.iShouldSeeNumberBooksInTheResults(java.lang.Integer)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32meach book should have author &amp#27;[0m&amp#27;[32m&amp#27;[1m"J.K. Rowling"&amp#27;[0m  &amp#27;[90m# com.example.StepDefinitions.eachBookShouldHaveAuthor(java.lang.String)&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="Search for books by category" classname="Book Search" time="0.004">
+    <system-out><![CDATA[
+Scenario: Search for books by category              &amp#27;[90m# com/example/example.feature:20&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32man empty book database&amp#27;[0m                      &amp#27;[90m# com.example.StepDefinitions.anEmptyBookDatabase()&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe following books exist:&amp#27;[0m                  &amp#27;[90m# com.example.StepDefinitions.theFollowingBooksExist(io.cucumber.datatable.DataTable)&amp#27;[0m
+    | title      | author         | category | published  |
+    | The Hobbit | J.R.R. Tolkien | Fantasy  | 1937-09-21 |
+    | Dune       | Frank Herbert  | Sci-Fi   | 1965-08-01 |
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI search for books in the &amp#27;[0m&amp#27;[32m&amp#27;[1m"Fantasy"&amp#27;[0m&amp#27;[32m category&amp#27;[0m &amp#27;[90m# com.example.StepDefinitions.iSearchForBooksInTheCategory(java.lang.String)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should see &amp#27;[0m&amp#27;[32m&amp#27;[1m1&amp#27;[0m&amp#27;[32m book(s) in the results&amp#27;[0m        &amp#27;[90m# com.example.StepDefinitions.iShouldSeeNumberBooksInTheResults(java.lang.Integer)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32meach book should be in category &amp#27;[0m&amp#27;[32m&amp#27;[1m"Fantasy"&amp#27;[0m     &amp#27;[90m# com.example.StepDefinitions.eachBookShouldBeInCategory(java.lang.String)&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="Search for books with no results" classname="Book Search" time="0.002">
+    <system-out><![CDATA[
+Scenario: Search for books with no results           &amp#27;[90m# com/example/example.feature:29&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32man empty book database&amp#27;[0m                       &amp#27;[90m# com.example.StepDefinitions.anEmptyBookDatabase()&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe following books exist:&amp#27;[0m                   &amp#27;[90m# com.example.StepDefinitions.theFollowingBooksExist(io.cucumber.datatable.DataTable)&amp#27;[0m
+    | title     | author      | category | published  |
+    | Some Book | Some Author | Misc     | 2000-01-01 |
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI search for books by author &amp#27;[0m&amp#27;[32m&amp#27;[1m"Unknown Author"&amp#27;[0m &amp#27;[90m# com.example.StepDefinitions.iSearchForBooksByAuthor(java.lang.String)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should see &amp#27;[0m&amp#27;[32m&amp#27;[1m0&amp#27;[0m&amp#27;[32m book(s) in the results&amp#27;[0m         &amp#27;[90m# com.example.StepDefinitions.iShouldSeeNumberBooksInTheResults(java.lang.Integer)&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="Search for books by title (exact)" classname="Book Search" time="0.004">
+    <system-out><![CDATA[
+Scenario: Search for books by title (exact)                  &amp#27;[90m# com/example/example.feature:36&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32man empty book database&amp#27;[0m                               &amp#27;[90m# com.example.StepDefinitions.anEmptyBookDatabase()&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe following books exist:&amp#27;[0m                           &amp#27;[90m# com.example.StepDefinitions.theFollowingBooksExist(io.cucumber.datatable.DataTable)&amp#27;[0m
+    | title      | author         | category | published  |
+    | The Hobbit | J.R.R. Tolkien | Fantasy  | 1937-09-21 |
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI search for books with the title &amp#27;[0m&amp#27;[32m&amp#27;[1m"The Hobbit"&amp#27;[0m        &amp#27;[90m# com.example.StepDefinitions.iSearchForBooksWithTheTitle(java.lang.String)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should see &amp#27;[0m&amp#27;[32m&amp#27;[1m1&amp#27;[0m&amp#27;[32m book(s) in the results&amp#27;[0m                 &amp#27;[90m# com.example.StepDefinitions.iShouldSeeNumberBooksInTheResults(java.lang.Integer)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe result should contain the book titled &amp#27;[0m&amp#27;[32m&amp#27;[1m"The Hobbit"&amp#27;[0m &amp#27;[90m# com.example.StepDefinitions.theResultShouldContainTheBookTitled(java.lang.String)&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="Search for books by partial title" classname="Book Search" time="0.002">
+    <system-out><![CDATA[
+Scenario: Search for books by partial title                             &amp#27;[90m# com/example/example.feature:44&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32man empty book database&amp#27;[0m                                          &amp#27;[90m# com.example.StepDefinitions.anEmptyBookDatabase()&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe following books exist:&amp#27;[0m                                      &amp#27;[90m# com.example.StepDefinitions.theFollowingBooksExist(io.cucumber.datatable.DataTable)&amp#27;[0m
+    | title                 | author         | category | published  |
+    | The Lord of the Rings | J.R.R. Tolkien | Fantasy  | 1954-07-29 |
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI search for books with the title containing &amp#27;[0m&amp#27;[32m&amp#27;[1m"Lord"&amp#27;[0m              &amp#27;[90m# com.example.StepDefinitions.iSearchForBooksWithTheTitleContaining(java.lang.String)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should see &amp#27;[0m&amp#27;[32m&amp#27;[1m1&amp#27;[0m&amp#27;[32m book(s) in the results&amp#27;[0m                            &amp#27;[90m# com.example.StepDefinitions.iShouldSeeNumberBooksInTheResults(java.lang.Integer)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe result should contain the book titled &amp#27;[0m&amp#27;[32m&amp#27;[1m"The Lord of the Rings"&amp#27;[0m &amp#27;[90m# com.example.StepDefinitions.theResultShouldContainTheBookTitled(java.lang.String)&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="Search for books by multiple criteria" classname="Book Search" time="0.003">
+    <system-out><![CDATA[
+Scenario: Search for books by multiple criteria                              &amp#27;[90m# com/example/example.feature:52&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32man empty book database&amp#27;[0m                                               &amp#27;[90m# com.example.StepDefinitions.anEmptyBookDatabase()&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe following books exist:&amp#27;[0m                                           &amp#27;[90m# com.example.StepDefinitions.theFollowingBooksExist(io.cucumber.datatable.DataTable)&amp#27;[0m
+    | title       | author        | category  | published  |
+    | 1984        | George Orwell | Dystopian | 1949-06-08 |
+    | Animal Farm | George Orwell | Satire    | 1945-08-17 |
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI search for books by author &amp#27;[0m&amp#27;[32m&amp#27;[1m"George Orwell"&amp#27;[0m&amp#27;[32m and category &amp#27;[0m&amp#27;[32m&amp#27;[1m"Dystopian"&amp#27;[0m &amp#27;[90m# com.example.StepDefinitions.iSearchForBooksByAuthorAndCategory(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should see &amp#27;[0m&amp#27;[32m&amp#27;[1m1&amp#27;[0m&amp#27;[32m book(s) in the results&amp#27;[0m                                 &amp#27;[90m# com.example.StepDefinitions.iShouldSeeNumberBooksInTheResults(java.lang.Integer)&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="Search books published between two dates" classname="Book Search" time="0.003">
+    <system-out><![CDATA[
+Scenario: Search books published between two dates                                 &amp#27;[90m# com/example/example.feature:60&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32man empty book database&amp#27;[0m                                                     &amp#27;[90m# com.example.StepDefinitions.anEmptyBookDatabase()&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe following books exist:&amp#27;[0m                                                 &amp#27;[90m# com.example.StepDefinitions.theFollowingBooksExist(io.cucumber.datatable.DataTable)&amp#27;[0m
+    | title            | author        | category | published  |
+    | Old Book         | Old Author    | History  | 1900-01-01 |
+    | Mid Century Book | Mid Author    | History  | 1955-05-05 |
+    | Modern Book      | Modern Author | History  | 2005-09-09 |
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mthe customer searches for books published between &amp#27;[0m&amp#27;[32m&amp#27;[1m1950-01-01&amp#27;[0m&amp#27;[32m and &amp#27;[0m&amp#27;[32m&amp#27;[1m2010-12-31&amp#27;[0m &amp#27;[90m# com.example.StepDefinitions.theCustomerSearchesForBooksPublishedBetween(java.time.LocalDate,java.time.LocalDate)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should see &amp#27;[0m&amp#27;[32m&amp#27;[1m2&amp#27;[0m&amp#27;[32m book(s) in the results&amp#27;[0m                                       &amp#27;[90m# com.example.StepDefinitions.iShouldSeeNumberBooksInTheResults(java.lang.Integer)&amp#27;[0m
+]]></system-out>
+  </testcase>
+  <testcase name="Populate using DataTable and filter by date range" classname="Book Search" time="0.002">
+    <system-out><![CDATA[
+Scenario: Populate using DataTable and filter by date range                        &amp#27;[90m# com/example/example.feature:69&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32man empty book database&amp#27;[0m                                                     &amp#27;[90m# com.example.StepDefinitions.anEmptyBookDatabase()&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe following books exist:&amp#27;[0m                                                 &amp#27;[90m# com.example.StepDefinitions.theFollowingBooksExist(io.cucumber.datatable.DataTable)&amp#27;[0m
+    | title           | author     | category | published  |
+    | One good book   | Anonymous  | Fiction  | 2013-03-12 |
+    | Some other book | Tim Tomson | Fiction  | 2020-08-23 |
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mthe customer searches for books published between &amp#27;[0m&amp#27;[32m&amp#27;[1m2010-01-01&amp#27;[0m&amp#27;[32m and &amp#27;[0m&amp#27;[32m&amp#27;[1m2015-12-31&amp#27;[0m &amp#27;[90m# com.example.StepDefinitions.theCustomerSearchesForBooksPublishedBetween(java.time.LocalDate,java.time.LocalDate)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32mI should see &amp#27;[0m&amp#27;[32m&amp#27;[1m1&amp#27;[0m&amp#27;[32m book(s) in the results&amp#27;[0m                                       &amp#27;[90m# com.example.StepDefinitions.iShouldSeeNumberBooksInTheResults(java.lang.Integer)&amp#27;[0m
+]]></system-out>
+  </testcase>
+</testsuite>
